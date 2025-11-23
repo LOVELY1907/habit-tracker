@@ -243,14 +243,3 @@ MIT License.
 
 🎉 Made with ❤️ using Python & Flask
 
-If you want, I can also generate:
-
-A GitHub banner image
-
-A GIF preview
-
-A feature screenshot pack
-
-A short LinkedIn post description
-
-A professional project summary for your resume
