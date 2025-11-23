@@ -1,245 +1,240 @@
 🌿 Habitory — Smart Habit Tracker
-A Notion-style, AI-powered habit tracking web app (Flask + SQLite + ML)
 
-Habitory is a full-stack, multi-user habit tracking system built with Python, Flask, SQLite, and real AI insights.
-Users can create habits, track progress on an interactive GitHub-like calendar, view analytics, and even receive predictive ML suggestions based on their past behavior.
 
-This project demonstrates backend development, frontend development, machine learning, database design, authentication, UX design, and system architecture — making it a strong portfolio addition.
 
-🚀 Features
-✅ User Accounts
 
-Register, login, logout (email + password)
+🧠 Smart Habit Tracker
+Modern, AI-powered habit tracking with monthly snapshots, insights & predictions
 
-Secure password hashing (Werkzeug)
+A clean, fast, intelligent habit tracking web app built using Python (Flask), SQLite, and Vanilla JS, featuring:
 
-Fully isolated user data
+✔ Month-isolated habit tracking
+✔ Smart AI predictions
+✔ Notifications for missed habits
+✔ Auto-generated insights
+✔ Clean Notion-style UI
+✔ Secure user accounts
+✔ Full habit history stored forever
+✔ Mobile-friendly UI
+✔ Works offline once loaded (PWA-ready)
 
-✅ Notion-Style UI
+🌟 Features
+🔐 User Accounts
 
-Clean, modern interface built with Tailwind CSS
+Users can register/login via email + password. Passwords are hashed using PBKDF2-SHA256.
 
-Soft colors, large spacing, smooth layout
+📅 Monthly Snapshot Habit Tracking
 
-✅ Habit Tracking
+Every month starts fresh.
 
-Add / rename / delete habits
+Habits added in November stay in November; December is empty until the user adds new habits.
 
-Track daily completions
+Monthly history is preserved permanently through the habit_snapshots system.
 
-GitHub-style contribution calendar
+Allows accurate month-to-month comparison.
 
-Unlimited history (stored forever)
+🗓 Interactive Calendar
 
-✅ Analytics & Insights
+Clickable calendar like Notion.
 
-Habit-wise progress chart
+Check off habits for each day.
 
-Monthly activity trends
+Real-time updates.
 
-Weekly consistency graph
+Smooth navigation between months.
 
-Overall performance score
+📊 Statistics & Graphs
 
-AI recommendations
+Three interactive charts:
 
-✅ AI Engine (3 levels)
-A) Rule-based AI
+Habit-wise Progress (frequency per habit)
 
-Missed-habit alerts
+Monthly Trend (daily completion)
 
-Low consistency alerts
+Weekly Consistency (weekly totals)
 
-Habit suggestions
+All charts are powered by Chart.js.
 
-B) Statistical AI
+🤖 AI-Powered Insights
 
-Weekly averages
+The system analyzes your performance and gives:
 
-Moving completion rate
+Top habit of the month
 
-Custom “habit health score”
+Weakest habit
 
-C) Machine Learning Predictions
+Overall monthly percentage
 
-Per-user ML model (Logistic Regression)
+Customized recommendations
 
-Predicts probability of completing each habit tomorrow
+Missed habit alerts
 
-Model auto-trains every 20 completions
+“Needs attention” notifications
 
-Stored per-user in /models/user_{id}.pkl
+🔮 AI Predictions (Next-day Probability)
 
-✅ Notifications System
+Using a lightweight ML model trained per user:
 
-Stored per user
+Predicts the probability that you will complete each habit tomorrow
 
-Notion-style reminder cards
+Builds features like recent streak, weekday behavior, last 30-day pattern
 
-Mark-as-read
+Works per-user and auto-re-trains every ~20 completions
 
-🏗 Tech Stack
-Backend
+🔔 Notifications
 
-Python 3
+The system generates notifications when:
 
-Flask
+A habit is neglected for several days
 
-SQLite
+Consistency is low
 
-scikit-learn
+Performance drops
 
-Pandas
+AI flags something important
 
-Werkzeug security
+Users can mark notifications as read.
 
-Frontend
-
-HTML (Jinja templates)
-
-Tailwind CSS
-
-Vanilla JavaScript
-
-Chart.js
-
-📁 Folder Structure
+🧱 Tech Stack
+Layer	Technology
+Backend	Python, Flask
+Frontend	HTML, CSS, JavaScript
+Database	SQLite
+Auth	PBKDF2-SHA256
+ML	scikit-learn (Logistic Regression), pandas, numpy
+Charts	Chart.js
+UI	Tailwind-style custom CSS
+Deployment-ready	Gunicorn / Render
+🗂 Project Structure
 habit-tracker/
 │
-├── app.py
-├── database.py
-├── requirements.txt
-├── README.md
+├── app.py                # Main Flask app
+├── database.py           # DB connection helpers
+├── habit_tracker.db      # SQLite database (auto-created)
 │
 ├── migrations/
-│   └── schema.sql
+│   └── schema.sql        # Tables: users, habits, snapshots, notifications, completions
 │
 ├── ai_engine/
-│   ├── rules.py
-│   ├── stats.py
-│   ├── ml_model.py
-│   └── trainer.py
-│
-├── models/
-│   └── (generated ML models)
+│   ├── rules.py          # Smart insights & recommendations
+│   ├── stats.py          # Monthly stats generation
+│   ├── ml_model.py       # Prediction model loader & inference
+│   └── trainer.py        # Trains user-specific ML models
 │
 ├── static/
-│   ├── styles.css
-│   └── dashboard.js
+│   ├── dashboard.js      # Calendar, charts, predictions, UI logic
+│   └── styles.css        # Clean UI styling
 │
-└── templates/
-    ├── layout.html
-    ├── login.html
-    ├── register.html
-    ├── dashboard.html
-    └── calendar.html (optional)
+├── templates/
+│   ├── layout.html       # Master layout
+│   ├── dashboard.html    # Calendar + charts + AI insights  
+│   ├── login.html
+│   └── register.html
+│
+├── init_db.py            # (Optional) Script to reset/initialize DB
+└── README.md             # This file
 
-⚙️ Setup Instructions
-1. Clone the repository
-git clone https://github.com/<your-username>/habit-tracker.git
-cd habit-tracker
+🚀 Getting Started
+1️⃣ Clone the repository
+git clone https://github.com/<your-username>/smart-habit-tracker.git
+cd smart-habit-tracker
 
-2. Create and activate a virtual environment
+2️⃣ Create a virtual environment
 python -m venv venv
-source venv/bin/activate       # Mac / Linux
-# venv\Scripts\activate        # Windows
 
-3. Install dependencies
+
+Activate:
+
+Windows:
+
+venv\Scripts\Activate.ps1
+
+
+Mac/Linux:
+
+source venv/bin/activate
+
+3️⃣ Install dependencies
 pip install -r requirements.txt
 
-4. Initialize the database
+4️⃣ Initialize the database
+python init_db.py
 
-(First run will auto-create habit_tracker.db, but you can initialize manually too.)
 
-sqlite3 habit_tracker.db < migrations/schema.sql
+This creates habit_tracker.db from migrations/schema.sql.
 
-5. Run the server
+5️⃣ Run the app
 python app.py
 
-6. Open in browser
-http://127.0.0.1:5000
 
-🔮 Machine Learning Model
+Open:
+👉 http://127.0.0.1:5000/
 
-Each user gets their own ML model trained on their historical completions.
+🔧 Development Tools
+Reset Database (dev only)
+Invoke-RestMethod -Uri http://127.0.0.1:5000/admin/reset-db -Method POST -Headers @{ "X-ADMIN-TOKEN" = "dev-token" }
 
-When does training happen?
+Download a DB backup
+http://127.0.0.1:5000/admin/download-db?token=dev-token
 
-Automatically every 20 new habit completions
 
-Can also be manually triggered:
+(Remove before deploying.)
 
-python -m ai_engine.trainer <user_id>
+🧪 ML Model Details
 
-What does the ML model predict?
+Logistic Regression classifier
 
-Probability that a user will complete each habit tomorrow
+Features per habit:
 
-Used to generate:
+Last 7-day consistency
 
-“probability_next_day”
+Day-of-week one-hot encoded
 
-Personalized habit suggestions
+Streak length
 
-Predictive analytics
+Model retrains after every 20 completions
 
-🌟 Why This Project Matters
+Each user has an isolated model in ml_models/
 
-This is not a todo list or a basic CRUD app.
-It's a full production-style system showing:
+🛡 Security
 
-✔ Authentication
-✔ Database design
-✔ AI integration
-✔ ML model training + prediction
-✔ Real user retention logic
-✔ A polished Notion-inspired UI
-✔ State management with API calls
-✔ Chart visualizations
-✔ Clean code and folder structure
+Password hashing using PBKDF2-SHA256
 
-This is exactly the type of project that impresses:
+Session-based authentication
 
-Recruiters
+No habit data leaked between users
 
-Professors
+Snapshots ensure history cannot mutate
 
-Internship panels
+Database file excluded from Git (add habit_tracker.db to .gitignore)
 
-Hackathon judges
+📸 Screenshots (Add your images here)
+[ Add screenshots of dashboard, calendar, charts, AI insights, login page ]
 
-And it shows you can build complete, AI-driven systems.
-
-🛠 Future Improvements
-
-(You can add these as GitHub “Issues”)
+🌍 Future Enhancements
 
 Dark mode
 
-Push notifications
+PWA mobile app version
 
-Mobile-first redesign
+AI-based habit suggestions
 
-Streak calendar with color intensity
+Weekly/monthly PDF reports
 
-Habit categories & tags
+Social accountability groups
 
-Google login (OAuth)
+Google login
 
-PostgreSQL migration for deployment
+📝 License
 
-Docker support
+This project is licensed under the MIT License.
 
-Background ML training scheduler
+💛 Author
 
-🤝 Contributing
+Lovely Pavithra G
+💌 lovely.g1907@gmail.com
 
-Pull requests are welcome.
-Feel free to open issues for ideas or improvements.
+🧠 Cybersecurity + AI/ML + Web Developer
 
-📜 License
-
-MIT License.
-
-🎉 Made with ❤️ using Python & Flask
+If you like this project, ⭐ star the repository!
 
