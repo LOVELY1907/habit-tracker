@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+  <!-- Left: quick controls -->
+  <div class="col-span-1">
+    <div class="bg-white p-4 rounded shadow">
+      <h3 class="font-medium mb-2">Add habit</h3>
+      <form id="addHabitForm" class="flex gap-2">
+        <input id="habitName" placeholder="e.g., Read 20 pages" class="flex-1 border rounded px-2 py-1">
+        <button class="bg-[#00C48C] text-white px-3 py-1 rounded">Add</button>
+      </form>
+      <div class="mt-4">
+        <h4 class="text-sm font-medium">Your habits</h4>
+        <ul id="habitList" class="mt-2 space-y-2 max-h-64 overflow-auto"></ul>
+      </div>
+      <div class="mt-4">
+        <h4 class="text-sm font-medium">Notifications</h4>
+        <ul id="notifications" class="mt-2 space-y-2 text-sm"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Middle: calendar (big) -->
+  <div class="col-span-3">
+    <div class="bg-white p-4 rounded shadow mb-4">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-3">
+          <button id="prevMonth" class="px-2 py-1 rounded hover:bg-gray-100">◀</button>
+          <div id="monthYear" class="text-lg font-medium"></div>
+          <button id="nextMonth" class="px-2 py-1 rounded hover:bg-gray-100">▶</button>
+        </div>
+        <div class="flex gap-2">
+          <button id="todayBtn" class="px-2 py-1 rounded bg-[#EEF9F4]">Today</button>
+        </div>
+      </div>
+      <div id="calendar" class="grid grid-cols-7 gap-2"></div>
+    </div>
+
+   <!-- CHARTS SECTION (compact, fixed height, Notion-style) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+
+  <!-- Habit-wise Progress -->
+  <div class="bg-white p-4 rounded-xl shadow-sm border">
+    <h4 class="font-medium mb-3">Habit-wise Progress</h4>
+    <div class="chart-wrap">
+      <canvas id="habitChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Monthly Trend -->
+  <div class="bg-white p-4 rounded-xl shadow-sm border">
+    <h4 class="font-medium mb-3">Monthly Trend</h4>
+    <div class="chart-wrap">
+      <canvas id="monthlyChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Weekly Consistency -->
+  <div class="bg-white p-4 rounded-xl shadow-sm border">
+    <h4 class="font-medium mb-3">Weekly Consistency</h4>
+    <div class="chart-wrap">
+      <canvas id="weeklyChart"></canvas>
+    </div>
+  </div>
+
+</div>
+
+    <div class="bg-white p-4 rounded shadow mt-4">
+      <h4 class="font-medium">AI Insights</h4>
+      <div id="insights" class="mt-2 text-sm text-gray-700"></div>
+      <div class="mt-4">
+        <h5 class="font-medium">Predictions (Tomorrow)</h5>
+        <div id="predictions" class="mt-2 text-sm"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="max-w-lg mx-auto bg-white p-6 rounded shadow">
+  <h2 class="text-xl font-medium mb-3">Create account</h2>
+  {% if error %}<div class="text-sm text-red-600 mb-2">{{ error }}</div>{% endif %}
+  <form method="post">
+    <label class="block text-sm">Email</label>
+    <input name="email" type="email" class="w-full border rounded px-3 py-2 mb-3" required>
+    <label class="block text-sm">Password</label>
+    <input name="password" type="password" class="w-full border rounded px-3 py-2 mb-4" required>
+    <button class="bg-[#00C48C] text-white px-4 py-2 rounded">Register</button>
+  </form>
+  <div class="text-sm text-gray-500 mt-3">Already have an account? <a href="{{ url_for('login') }}" class="text-blue-600">Login</a></div>
+</div>
+{% endblock %}
