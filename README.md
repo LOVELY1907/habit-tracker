@@ -85,50 +85,50 @@ Notifications can be marked as read.
 
 ---
 
-## 🧱 Tech Stack
-
-| Layer | Technology |
-|------|------------|
-| Backend | Python, Flask |
-| Frontend | HTML, CSS, JavaScript |
-| Database | SQLite |
-| Auth | PBKDF2-SHA256 |
-| ML | scikit-learn (Logistic Regression), pandas, numpy |
-| Charts | Chart.js |
-| UI | Tailwind-style custom CSS |
-| Deployment-ready | Gunicorn / Render |
+## 🧱 Tech Stack<br>
+<br>
+| Layer | Technology |<br>
+|------|------------|<br>
+| Backend | Python, Flask |<br>
+| Frontend | HTML, CSS, JavaScript |<br>
+| Database | SQLite |<br>
+| Auth | PBKDF2-SHA256 |<br>
+| ML | scikit-learn (Logistic Regression), pandas, numpy |<br>
+| Charts | Chart.js |<br>
+| UI | Tailwind-style custom CSS |<br>
+| Deployment-ready | Gunicorn / Render |<br>
 
 ---
 
 ## 🗂 Project Structure
 
-habit-tracker/
-│
-├── app.py # Main Flask app
-├── database.py # DB connection helpers
-├── habit_tracker.db # SQLite database (auto-created)
-│
-├── migrations/
-│ └── schema.sql # Tables: users, habits, snapshots, notifications, completions
-│
-├── ai_engine/
-│ ├── rules.py # Smart insights & recommendations
-│ ├── stats.py # Monthly stats generation
-│ ├── ml_model.py # Prediction model loader & inference
-│ └── trainer.py # Trains user-specific ML models
-│
-├── static/
-│ ├── dashboard.js # Calendar, charts, predictions, UI logic
-│ └── styles.css # Clean UI styling
-│
-├── templates/
-│ ├── layout.html # Master layout
-│ ├── dashboard.html # Calendar + charts + AI insights
-│ ├── login.html
-│ └── register.html
-│
-├── init_db.py # (Optional) Script to reset/initialize DB
-└── README.md # This file
+habit-tracker/<br>
+│<br>
+├── app.py # Main Flask app<br>
+├── database.py # DB connection helpers<br>
+├── habit_tracker.db # SQLite database (auto-created)<br>
+│<br>
+├── migrations/<br>
+│ └── schema.sql # Tables: users, habits, snapshots, notifications, completions<br>
+│<br>
+├── ai_engine/<br>
+│ ├── rules.py # Smart insights & recommendations<br>
+│ ├── stats.py # Monthly stats generation<br>
+│ ├── ml_model.py # Prediction model loader & inference<br>
+│ └── trainer.py # Trains user-specific ML models<br>
+│<br>
+├── static/<br>
+│ ├── dashboard.js # Calendar, charts, predictions, UI logic<br>
+│ └── styles.css # Clean UI styling<br>
+│<br>
+├── templates/<br>
+│ ├── layout.html # Master layout<br>
+│ ├── dashboard.html # Calendar + charts + AI insights<br>
+│ ├── login.html<br>
+│ └── register.html<br>
+│<br>
+├── init_db.py # (Optional) Script to reset/initialize DB<br>
+└── README.md # This file<br>
 
 
 ---
@@ -238,3 +238,4 @@ Lovely Pavithra G
 🧠 Cybersecurity • AI/ML • Web Developer
 
 If you like this project, ⭐ star the repository!
+
